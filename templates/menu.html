@@ -55,28 +55,40 @@
   <div class="container my-4">
     <div class="row">
       <div class="col-12">
-        <table class="table table-bordered table-striped text-center align-middle">
-          <thead class="table-light">
-            <tr>
-              <th scope="col">Item</th>
-              <th scope="col">Price</th>
-              <th scope="col">Quantity</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for item in items %}
-            <tr>
-              <td>{{ item.name }}</td>
-              <td>₹{{ item.price }}</td>
-              <td>
-                <input type="number" name="quantity_{{ item.id }}" class="form-control w-50 mx-auto" min="0" value="0">
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
+        <form action="/place_order" method="POST">
+          <table class="table table-bordered table-striped text-center align-middle">
+            <thead class="table-light">
+              <tr>
+                <th scope="col">Item</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in items %}
+              <tr>
+                <td>{{ item.name }}</td>
+                <td>₹{{ item.price }}</td>
+                <td>
+                  <input type="number" name="quantity_{{ item.id }}" class="form-control w-50 mx-auto" min="0"
+                    value="0">
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
 
-        </table>
-        <button type="button" class="btn btn-outline-success btn-order">Place Order</button>
+          <!-- Customer Name -->
+          <div class="mb-3">
+            <label for="customer_name" class="form-label">Customer Name</label>
+            <input type="text" class="form-control w-50" id="customer_name" name="customer_name"
+              placeholder="Enter your name" required>
+          </div>
+
+          <!-- Place Order Button -->
+          <button type="submit" class="btn btn-success btn-order">Place Order</button>
+        </form>
+
       </div>
     </div>
   </div>
