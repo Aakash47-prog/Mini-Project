@@ -1,0 +1,63 @@
+/* ===== General Reset ===== */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #f8fff8, #f1f9f1);
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Hero Section ===== */
+.container h1 {
+  font-weight: 700;
+  color: #198754; /* Bootstrap success green */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.container p.lead {
+  font-size: 1.25rem;
+  color: #555;
+}
+
+/* ===== Button Styling ===== */
+.btn-lg {
+  padding: 12px 32px;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-lg:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Footer ===== */
+/* Make the body take full height */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Content should grow and push footer down */
+.container {
+  flex: 1;
+}
+
+/* Footer stays at the bottom */
+footer {
+  background: #f8f9fa;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: auto;   /* pushes footer down */
+  border-top: 1px solid #ddd;
+  font-size: 0.9rem;
+  color: #666;
+}

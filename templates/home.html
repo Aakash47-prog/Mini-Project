@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canteen Billing System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+
+</head>
+
+<body class="bg-light">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Canteen Billing</a>
+      <a class="navbar-brand" href="http://127.0.0.1:3000/feedback.html">Feedback</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="container text-center mt-5">
+    <h1 class="display-4 text-success">Welcome to Canteen Billing System</h1>
+    <p class="lead mt-3">Order your favorite items easily and get your bill instantly!</p>
+
+    <div class="mt-4">
+      <a href="{{ url_for('menu') }}" class="btn btn-primary btn-lg">Go to Menu</a>
+    </div>
+  </div>
+
+  <footer class="text-center mt-5 py-3 bg-dark text-white">
+    &copy; {{ 2025 }} Canteen Billing System. All rights reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
