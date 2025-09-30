@@ -71,6 +71,27 @@ def place_order():
 
     return redirect(url_for("bill_page", order_id=order.id))
 
+@app.route("/feedback")
+def feedback():
+    return render_template("feedback.html")
+
+#  pay bill
+@app.route("/payment/<int:order_id>")
+def payment(order_id):
+    order = Order.query.get_or_404(order_id)
+    return render_template("payment.html", order=order)
+
+@app.route("/process_payment/<int:order_id>", methods=["POST"])
+def process_payment(order_id):
+    # Normally, you'd integrate Razorpay/Stripe here
+    # For demo, just show "Payment Successful"
+    order = Order.query.get_or_404(order_id)
+    return f"<h2 style='color:green;text-align:center;'>Payment Successful for {order.customer_name} - ₹{order.bill.total_amount}</h2>"
+
+
+
+
+
 @app.route("/bill/<int:order_id>")
 def bill_page(order_id):
     order = Order.query.get_or_404(order_id)
