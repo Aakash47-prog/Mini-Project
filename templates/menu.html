@@ -29,23 +29,37 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Bill</a>
           </li>
+
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
+            <a class="nav-link dropdown-toggle" href="#" id="specialDropdown" role="button" data-bs-toggle="dropdown">
+              dropdown
             </a>
+
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="#">a</a></li>
+              <li><a class="dropdown-item" href="#">b</a></li>
+
             </ul>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-outline-success" type="submit">Search</button>
+
+
+
+
+        <a href="{{ url_for('add_item') }}" class="btn btn-success rounded-pill px-4 py-2 me-3 shadow">
+          <i class="fa-solid fa-circle-plus"></i> Add Item
+        </a>
+
+
+
+
+        <form class="d-flex" role="search" action="{{ url_for('menu') }}" method="GET">
+          <input class="form-control me-2" type="search" name="search" placeholder="Search items..."
+            aria-label="Search">
+
+          <button class="btn btn-outline-light" type="submit">
+            🔍 Search
+          </button>
         </form>
       </div>
     </div>
@@ -59,9 +73,12 @@
           <table class="table table-bordered table-striped text-center align-middle">
             <thead class="table-light">
               <tr>
+
                 <th scope="col">Item</th>
                 <th scope="col">Price</th>
                 <th scope="col">Quantity</th>
+                <th scope="col">Action</th>
+
               </tr>
             </thead>
             <tbody>
@@ -72,6 +89,11 @@
                 <td>
                   <input type="number" name="quantity_{{ item.id }}" class="form-control w-50 mx-auto" min="0"
                     value="0">
+                </td>
+                <td>
+                  <a href="{{ url_for('update_item', id=item.id) }}" class="btn btn-warning btn-sm">
+                    ✏ Update Price
+                  </a>
                 </td>
               </tr>
               {% endfor %}

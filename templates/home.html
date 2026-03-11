@@ -14,8 +14,42 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-success">
     <div class="container-fluid">
+
       <a class="navbar-brand" href="/">Canteen Billing</a>
-      <a class="navbar-brand" href="{{ url_for('feedback') }}">Feedback</a>
+
+      <!-- Navbar Toggle for Mobile -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+
+          <!-- Today's Specials Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="specialDropdown" role="button" data-bs-toggle="dropdown">
+              ⚡Daily Special Discounts
+            </a>
+
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#burger">🍔 Burger - ₹99</a></li>
+              <li><a class="dropdown-item" href="#pizza">🍕 Pizza - ₹149</a></li>
+              <li><a class="dropdown-item" href="#coffee">🥤 Cold Coffee - ₹39</a></li>
+            </ul>
+          </li>
+
+
+          <!-- Feedback -->
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('feedback') }}">Feedback</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('bills_history') }}">🧾 Bills</a>
+          </li>
+        </ul>
+      </div>
 
     </div>
   </nav>
@@ -29,6 +63,9 @@
       <a href="{{ url_for('menu') }}" class="btn btn-primary btn-lg">Go to Menu</a>
     </div>
   </div>
+
+
+
 
   <footer class="text-center mt-5 py-3 bg-dark text-white">
     &copy; {{ 2025 }} Canteen Billing System. All rights reserved.
