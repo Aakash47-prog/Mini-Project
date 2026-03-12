@@ -1,0 +1,82 @@
+/* General page styling */
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container for form */
+.container1 {
+  width: 400px;
+  margin: 80px auto;
+  padding: 40px;
+  padding-right: 55px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+/* Heading */
+.container1 h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* Labels */
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #444;
+}
+
+/* Input fields */
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+}
+
+input:focus, textarea:focus {
+  border-color: #007bff;
+}
+
+/* Submit button */
+button {
+  width: 100%;
+  padding: 10px;
+  background: #bc48b4;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #6899ce;
+}
+
+/* header name */
+.container1 h2 {
+  text-align: center;      /* Center the text */
+  font-size: 26px;         /* Bigger font size */
+  font-weight: bold;       /* Make it bold */
+  color: teal;             /* Text color */
+  margin-bottom: 20px;     /* Space below heading */
+  text-transform: uppercase; /* Make it ALL CAPS */
+  letter-spacing: 1px;     /* Slight spacing between letters */
+  border-bottom: 2px solid teal; /* Underline effect */
+  padding-bottom: 10px;    /* Space between text & border */
+}
+
+
+
+
+

@@ -1,63 +1,148 @@
-/* ===== General Reset ===== */
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to right, #f8fff8, #f1f9f1);
-  color: #333;
-  margin: 0;
-  padding: 0;
+/* ===== Google Font ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* ===== Global Reset ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html, body{
+  height:100%;
+  font-family:'Poppins', sans-serif;
+}
+
+/* ===== Background ===== */
+body{
+  display:flex;
+  flex-direction:column;
+  background: linear-gradient(135deg,#e8f5e9,#f1f8e9,#ffffff);
+  color:#333;
 }
 
 /* ===== Navbar ===== */
-.navbar {
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+.navbar{
+  background: linear-gradient(90deg,#198754,#2ecc71);
+  box-shadow:0 4px 15px rgba(0,0,0,0.15);
+  padding:12px 20px;
+}
+
+.navbar-brand{
+  font-weight:600;
+  font-size:1.3rem;
+  color:white !important;
+}
+
+.nav-link{
+  color:white !important;
+  margin-left:15px;
+  transition:0.3s;
+}
+
+.nav-link:hover{
+  color:#eaffea !important;
+  transform:translateY(-2px);
 }
 
 /* ===== Hero Section ===== */
-.container h1 {
-  font-weight: 700;
-  color: #198754; /* Bootstrap success green */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+.container{
+  flex:1;
+  text-align:center;
+  padding:80px 20px;
+  animation:fadeUp 1s ease;
 }
 
-.container p.lead {
-  font-size: 1.25rem;
-  color: #555;
+.container h1{
+  font-size:3rem;
+  font-weight:700;
+  color:#198754;
+  margin-bottom:20px;
+  text-shadow:2px 2px 6px rgba(0,0,0,0.1);
 }
 
-/* ===== Button Styling ===== */
-.btn-lg {
-  padding: 12px 32px;
-  font-size: 1.2rem;
-  border-radius: 30px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.container p.lead{
+  font-size:1.25rem;
+  color:#555;
+  margin-bottom:35px;
 }
 
-.btn-lg:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+/* ===== Buttons ===== */
+.btn-lg{
+  padding:14px 38px;
+  font-size:1.2rem;
+  border-radius:40px;
+  border:none;
+  background:linear-gradient(45deg,#198754,#2ecc71);
+  color:white;
+  cursor:pointer;
+  transition:all 0.3s ease;
+  box-shadow:0 5px 15px rgba(0,0,0,0.15);
 }
+
+.btn-lg:hover{
+  transform:translateY(-4px) scale(1.05);
+  box-shadow:0 10px 25px rgba(0,0,0,0.25);
+  background:linear-gradient(45deg,#157347,#20c997);
+}
+
+/* ===== Cards (Optional if you add sections) ===== */
+.card{
+  border:none;
+  border-radius:15px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
 
 /* ===== Footer ===== */
-/* Make the body take full height */
-html, body {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
+footer{
+  background:linear-gradient(90deg,#2a7bb2,#e9f5ec);
+  text-align:center;
+  padding:18px 0;
+  margin-top:auto;
+  border-top:1px solid #ddd;
+  font-size:0.9rem;
+  color:#666;
+  box-shadow:0 -2px 10px rgba(0,0,0,0.08);
 }
 
-/* Content should grow and push footer down */
-.container {
-  flex: 1;
+/* ===== Smooth Animations ===== */
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
-/* Footer stays at the bottom */
-footer {
-  background: #f8f9fa;
-  text-align: center;
-  padding: 15px 0;
-  margin-top: auto;   /* pushes footer down */
-  border-top: 1px solid #ddd;
-  font-size: 0.9rem;
-  color: #666;
+/* ===== Button Pulse Animation ===== */
+.btn-lg:active{
+  transform:scale(0.97);
+}
+
+/* ===== Responsive ===== */
+@media(max-width:768px){
+
+.container h1{
+  font-size:2.2rem;
+}
+
+.container p.lead{
+  font-size:1rem;
+}
+
+.btn-lg{
+  padding:12px 30px;
+  font-size:1rem;
+}
+
 }

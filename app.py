@@ -165,10 +165,33 @@ def update_item(id):
 
 #  display a order hstory
 
+# @app.route("/bills_history")
+# def bills_history():
+
+#     import mysql.connector
+
+#     conn = mysql.connector.connect(
+#         host="localhost",
+#         user="root",
+#         password="world",
+#         database="canteen_db"
+#     )
+
+#     cursor = conn.cursor()
+
+#     query = "SELECT id, order_id, total_amount, generated_at FROM bills ORDER BY generated_at DESC"
+#     cursor.execute(query)
+
+#     bills = cursor.fetchall()
+
+#     cursor.close()
+#     conn.close()
+
+#     return render_template("bills_history.html", bills=bills)
+
+
 @app.route("/bills_history")
 def bills_history():
-
-    import mysql.connector
 
     conn = mysql.connector.connect(
         host="localhost",
@@ -179,16 +202,23 @@ def bills_history():
 
     cursor = conn.cursor()
 
+    # bills list
     query = "SELECT id, order_id, total_amount, generated_at FROM bills ORDER BY generated_at DESC"
     cursor.execute(query)
-
     bills = cursor.fetchall()
+
+    # total sales
+    cursor.execute("SELECT SUM(total_amount) FROM bills")
+    total_sales = cursor.fetchone()[0]
 
     cursor.close()
     conn.close()
 
-    return render_template("bills_history.html", bills=bills)
-
+    return render_template("bills_history.html", bills=bills, total_sales=total_sales)
  
+# if __name__ == "__main__":
+#     app.run(debug=True)
 if __name__ == "__main__":
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)

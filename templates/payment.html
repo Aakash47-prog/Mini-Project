@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -59,5 +59,123 @@
       <button type="submit" class="btn-pay">Pay Now</button>
     </form>
   </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Payment</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+body{
+background: linear-gradient(135deg,#d4fc79,#96e6a1);
+}
+
+/* Card */
+.payment-card{
+max-width:450px;
+margin:60px auto;
+padding:25px;
+border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
+background:white;
+}
+
+/* Pay button */
+.btn-pay{
+background:#28a745;
+color:white;
+font-size:18px;
+padding:10px;
+border-radius:8px;
+width:100%;
+transition:0.3s;
+border:none;
+}
+
+.btn-pay:hover{
+background:#218838;
+transform:scale(1.05);
+}
+
+/* QR section */
+.qr-box{
+text-align:center;
+margin-top:25px;
+padding:15px;
+border-top:1px solid #ddd;
+}
+
+.qr-box img{
+width:180px;
+margin-top:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="payment-card">
+
+<h3 class="text-center text-success">Pay Your Bill</h3>
+<p class="text-center">Total: <strong>₹{{ order.bill.total_amount }}</strong></p>
+
+<!-- Card Payment -->
+
+<h5 class="mt-3">Pay with Card</h5>
+
+<form method="POST" action="/process_payment/{{ order.id }}">
+
+<div class="mb-3">
+<label class="form-label">Card Number</label>
+<input type="text" class="form-control" placeholder="xxxx-xxxx-xxxx-xxxx" required>
+</div>
+
+<div class="mb-3">
+<label class="form-label">Card Holder</label>
+<input type="text" class="form-control" required>
+</div>
+
+<div class="row">
+
+<div class="col-md-6 mb-3">
+<label class="form-label">Expiry</label>
+<input type="text" class="form-control" placeholder="MM/YY" required>
+</div>
+
+<div class="col-md-6 mb-3">
+<label class="form-label">CVV</label>
+<input type="password" class="form-control" placeholder="***" required>
+</div>
+
+</div>
+
+<button type="submit" class="btn-pay">Pay Now</button>
+
+</form>
+
+
+<!-- QR Payment -->
+
+<div class="qr-box">
+
+<h5>Or Pay via UPI</h5>
+
+<p>Scan the QR Code</p>
+
+<img src="{{ url_for('static', filename='css/images/upi_qr1.jpeg') }}" alt="UPI QR">
+<p class="mt-2">UPI ID: <b>canteen@upi</b></p>
+
+</div>
+
+</div>
+
 </body>
 </html>

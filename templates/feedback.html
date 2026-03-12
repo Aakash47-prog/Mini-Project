@@ -1,106 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feedback Form</title>
-  <link rel="stylesheet" href="sty.css">
-  <style>
-    /* Popup background overlay */
-    .popup-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      display: none; /* hidden by default */
-      justify-content: center;
-      align-items: center;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback Form</title>
 
-    /* Popup box */
-    .popup {
-      background: #fff;
-      padding: 25px;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      max-width: 350px;
-      width: 90%;
-      animation: fadeIn 0.3s ease-in-out;
-    }
+<style>
 
-    .popup h3 {
-      margin: 0 0 10px;
-      color: teal;
-    }
+/* Background */
+body{
+font-family: 'Segoe UI', sans-serif;
+background: linear-gradient(135deg,#d4fc79,#96e6a1);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+margin:0;
+}
 
-    .popup p {
-      margin-bottom: 15px;
-      color: #333;
-    }
+/* Form card */
+.container1{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(12px);
+padding:35px;
+border-radius:15px;
+width:380px;
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
+color:white;
+}
 
-    .popup button {
-      background: teal;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 16px;
-    }
+/* Title */
+.container1 h2{
+text-align:center;
+margin-bottom:20px;
+letter-spacing:1px;
+}
 
-    .popup button:hover {
-      background: #005f5f;
-    }
+/* Labels */
+label{
+font-size:14px;
+opacity:0.9;
+}
 
-    /* Animation */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
-    }
-  </style>
+/* Inputs */
+input, textarea{
+width:100%;
+padding:12px;
+margin-top:6px;
+margin-bottom:15px;
+border-radius:8px;
+border:none;
+outline:none;
+font-size:14px;
+background:rgba(255,255,255,0.9);
+transition:0.3s;
+}
+
+/* Input focus */
+input:focus, textarea:focus{
+box-shadow:0 0 8px #00e5ff;
+transform:scale(1.02);
+}
+
+/* Submit button */
+button{
+width:100%;
+padding:12px;
+background:linear-gradient(135deg,#00c9a7,#007a86);
+border:none;
+border-radius:8px;
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+/* Hover animation */
+button:hover{
+transform:translateY(-2px);
+box-shadow:0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* Home button */
+.home{
+text-align:center;
+margin-top:15px;
+}
+
+.order-btn{
+text-decoration:none;
+background:white;
+color:#007a86;
+padding:8px 18px;
+border-radius:20px;
+font-weight:500;
+transition:0.3s;
+}
+
+.order-btn:hover{
+background:#007a86;
+color:white;
+}
+
+/* Popup overlay */
+.popup-overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+display:none;
+justify-content:center;
+align-items:center;
+}
+
+/* Popup box */
+.popup{
+background:white;
+padding:30px;
+border-radius:12px;
+text-align:center;
+width:320px;
+animation:popupAnim 0.35s ease;
+}
+
+.popup h3{
+color:#00a88f;
+margin-bottom:10px;
+}
+
+/* Popup button */
+.popup button{
+background:#00a88f;
+border:none;
+color:white;
+padding:10px 20px;
+border-radius:6px;
+cursor:pointer;
+}
+
+/* Animation */
+@keyframes popupAnim{
+from{
+transform:scale(0.6);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
+
+</style>
 </head>
+
 <body>
-  <div class="container1">
-    <h2>Feedback Form</h2>
-    <form onsubmit="showPopup(event)">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" placeholder="Enter your name" required>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+<div class="container1">
 
-      <label for="message">Feedback:</label>
-      <textarea id="message" name="message" rows="4" placeholder="Write your feedback..." required></textarea>
+<h2>Customer Feedback</h2>
 
-      <button type="submit">Submit</button>
-      
-      <div class="home">
-         <a href="http://127.0.0.1:3000/Mini-Project/templates/home.html" class="order-btn">Home page</a>
-      </div>
-    </form>
-  </div>
+<form id="feedbackForm">
 
-  <!-- Popup -->
-  <div class="popup-overlay" id="popup">
-    <div class="popup">
-      <h3>✅ Thank You!</h3>
-      <p>Your feedback has been submitted successfully.</p>
-      <button onclick="closePopup()">OK</button>
-    </div>
-  </div>
+<label>Name</label>
+<input type="text" name="name" placeholder="Enter your name" required>
 
-  <script>
-    function showPopup(event) {
-      event.preventDefault(); // stop form from refreshing
-      document.getElementById("popup").style.display = "flex";
-    }
+<label>Email</label>
+<input type="email" name="email" placeholder="Enter your email" required>
 
-    function closePopup() {
-      document.getElementById("popup").style.display = "none";
-    }
-  </script>
+<label>Your Feedback</label>
+<textarea name="message" rows="4" placeholder="Write your feedback..." required></textarea>
+
+<button type="submit">Submit Feedback</button>
+
+<div class="home">
+<a href="{{ url_for('home') }}" class="order-btn">Home Page</a>
+</div>
+
+</form>
+
+</div>
+
+<!-- Popup -->
+<div class="popup-overlay" id="popup">
+
+<div class="popup">
+
+<h3>✅ Thank You!</h3>
+<p>Your feedback has been submitted successfully.</p>
+
+<button onclick="closePopup()">OK</button>
+
+</div>
+
+</div>
+
+<script>
+
+document.getElementById("feedbackForm").addEventListener("submit", function(event){
+
+event.preventDefault();
+
+document.getElementById("popup").style.display="flex";
+
+});
+
+function closePopup(){
+
+document.getElementById("popup").style.display="none";
+document.getElementById("feedbackForm").reset();
+
+}
+
+</script>
+
 </body>
 </html>
