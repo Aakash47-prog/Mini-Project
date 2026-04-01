@@ -45,25 +45,7 @@ class Bill(db.Model):
 def home():
     return render_template("home.html")
 
-# @app.route("/menu")
-# def menu():
-#     all_items = Item.query.all()
-#     return render_template('menu.html', items=all_items)
 
-
-
-
-
-# @app.route("/menu")
-# def menu():
-#     search = request.args.get("search")
-
-#     if search:
-#         items = Item.query.filter(Item.name.ilike(f"%{search}%")).all()
-#     else:
-#         items = Item.query.all()
-
-#     return render_template("menu.html", items=items)
 
 
 @app.route("/place_order", methods=["POST"])
@@ -163,31 +145,6 @@ def update_item(id):
 
     return render_template("update_item.html", item=item)
 
-#  display a order hstory
-
-# @app.route("/bills_history")
-# def bills_history():
-
-#     import mysql.connector
-
-#     conn = mysql.connector.connect(
-#         host="localhost",
-#         user="root",
-#         password="world",
-#         database="canteen_db"
-#     )
-
-#     cursor = conn.cursor()
-
-#     query = "SELECT id, order_id, total_amount, generated_at FROM bills ORDER BY generated_at DESC"
-#     cursor.execute(query)
-
-#     bills = cursor.fetchall()
-
-#     cursor.close()
-#     conn.close()
-
-#     return render_template("bills_history.html", bills=bills)
 
 
 @app.route("/bills_history")
