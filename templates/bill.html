@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,30 +8,77 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <style>
-  .pay-btn {
-    background-color: #28a745;   /* Green like success theme */
-    color: white;
-    border: none;
-    padding: 10px 22px;
-    font-size: 16px;
-    font-weight: 500;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
-  }
+  <style>
+    .pay-btn {
+      background-color: #28a745;
+      /* Green like success theme */
+      color: white;
+      border: none;
+      padding: 10px 22px;
+      font-size: 16px;
+      font-weight: 500;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+    }
 
-  .pay-btn:hover {
-    background-color: #218838;  /* Darker green on hover */
-    transform: scale(1.05);
-  }
+    .pay-btn:hover {
+      background-color: #218838;
+      /* Darker green on hover */
+      transform: scale(1.05);
+    }
 
-  .pay-btn:active {
-    transform: scale(0.95);
-    background-color: #1e7e34;
-  }
-</style>
+    .pay-btn:active {
+      transform: scale(0.95);
+      background-color: #1e7e34;
+    }
+
+    .bill-container {
+      width: 320px;
+      margin-left: auto;
+      background: linear-gradient(135deg, #f8fff9, #e6f7ec);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      border: 1px solid #d4edda;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .bill-title {
+      text-align: center;
+      color: #28a745;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .bill-row {
+      display: flex;
+      justify-content: space-between;
+      margin: 8px 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .bill-total {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #155724;
+      background: #d4edda;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background: #ccc;
+      margin: 10px 0;
+    }
+  </style>
 
 </head>
 
@@ -76,14 +122,45 @@
           </tbody>
         </table>
 
-        <div class="d-flex justify-content-end">
-          <h4 class="text-success">
-            Total: ₹{{ order.bill.total_amount }}
-          </h4>
+        <div class="bill-container">
+
+          <div class="bill-row">
+            <span>Bill Amount</span>
+            <span>₹{{ order.bill.total_amount }}</span>
+          </div>
+
+          <div class="bill-row">
+            <span>GST (18%)</span>
+            <span>₹{{ order.bill.total_amount * 18/100 }}</span>
+          </div>
+
+          <hr>
+
+          <div class="bill-total">
+            <span>Total</span>
+            <span>₹{{ (order.bill.total_amount * 18/100) + order.bill.total_amount }}</span>
+          </div>
         </div>
+        <!-- <div class="d-flex justify-content-end">
+          <a href="{{ url_for('payment', order_id=order.id) }}" class="pay-btn">Pay</a>
+        </div> -->
+        <br>
         <div class="d-flex justify-content-end">
-  <a href="{{ url_for('payment', order_id=order.id) }}" class="pay-btn">Pay</a>
-</div>
+          <a href="{{ url_for('payment', order_id=order.id) }}" style="
+         background: linear-gradient(135deg, #20696b, #183872);
+         color: white;
+         padding: 10px 20px;
+         border-radius: 25px;
+         text-decoration: none;
+         font-weight: bold;
+         box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+         transition: 0.3s;
+         display: inline-block;
+       " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+
+            💳 Pay Now
+          </a>
+        </div>
 
 
 

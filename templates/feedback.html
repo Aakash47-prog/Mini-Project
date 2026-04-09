@@ -163,8 +163,18 @@ opacity:1;
 
 <form id="feedbackForm">
 
-<label>Name</label>
-<input type="text" name="name" placeholder="Enter your name" required>
+<!-- <label>Name</label>
+<input type="text" name="name" placeholder="Enter your name" required> -->
+<label for="name">Full Name:</label>
+<input 
+  type="text" 
+  id="name" 
+  name="name" 
+  pattern="[A-Za-z\s]+" 
+  title="Invaid input. Please enter only letters and spaces." 
+  required
+>
+
 
 <label>Email</label>
 <input type="email" name="email" placeholder="Enter your email" required>
